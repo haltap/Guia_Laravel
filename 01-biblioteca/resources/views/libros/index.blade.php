@@ -2,6 +2,7 @@
 
 @section('contenido')
     <h1>Catálogo de Libros</h1>
+    <p><a href="{{ route('libros.create') }}">Registrar libro</a></p>
 
     <table>
         <thead>
