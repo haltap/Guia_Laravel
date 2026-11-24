@@ -18,8 +18,12 @@ Route::middleware('auth')->group(function () {
     })->name('inicio');
 
     Route::get('/libros', [LibroController::class, 'index'])->name('libros.index');
-    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
-    Route::get('/libros', [LibroController::class, 'index'])->name('libros.index');
     Route::get('/libros/crear', [LibroController::class, 'create'])->name('libros.create');
     Route::post('/libros', [LibroController::class, 'store'])->name('libros.store');
+    Route::get('/libros/{id}/editar', [LibroController::class, 'edit'])
+        ->whereNumber('id')->name('libros.edit');
+    Route::put('/libros/{id}', [LibroController::class, 'update'])
+        ->whereNumber('id')->name('libros.update');
+
+    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
