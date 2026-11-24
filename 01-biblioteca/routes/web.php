@@ -24,6 +24,8 @@ Route::middleware('auth')->group(function () {
         ->whereNumber('id')->name('libros.edit');
     Route::put('/libros/{id}', [LibroController::class, 'update'])
         ->whereNumber('id')->name('libros.update');
+    Route::delete('/libros/{id}', [LibroController::class, 'destroy'])
+        ->whereNumber('id')->name('libros.destroy');
 
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });

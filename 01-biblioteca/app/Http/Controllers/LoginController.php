@@ -32,11 +32,12 @@ class LoginController extends Controller
         ])->onlyInput('username');
     }
 
-    public function destroy(Request $request)
+    public function destroy(int $id)
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect()->route('login');
+        $libro = Libro::findOrFail($id);
+        $libro->delete();
+
+        return redirect()->route('libros.index')
+            ->with('exito', 'Libro eliminado correctamente.');
     }
 }
